@@ -19,12 +19,14 @@ public class DataServlet extends HttpServlet {
     }
     private User createUserFromRequest(HttpServletRequest request) {
         User user = new User();
-        user.setFirstName(request.getParameter("imię"));
-        user.setLastName(request.getParameter("nazwisko"));
-        user.setAge(request.getParameter("wiek"));
+        user.setFirstName(request.getParameter("firstName"));
+        user.setLastName(request.getParameter("lastName"));
+        user.setAge(request.getParameter("age"));
         user.setUrl(request.getParameter("url"));
         return user;
+
     }
+
 
     private void sendResponse(User user, HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("UTF-8");
@@ -59,6 +61,7 @@ public class DataServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = createUserFromRequest(request);
         sendResponse(user, response);
+
     }
 
 
